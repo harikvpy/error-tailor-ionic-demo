@@ -24,7 +24,7 @@ import { IonControlErrorComponent, anchorIonErrorComponent } from './ion-control
       errors: {
         useFactory() {
           return {
-            required: 'This field is required',
+            required: 'This field IS required',
             minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
           };
         },
