@@ -56,19 +56,13 @@ export class IonControlErrorComponent implements ControlErrorComponent {
   constructor(private cdr: ChangeDetectorRef, private host: ElementRef<HTMLElement>) {}
 }
 
-// error component anchor/destroy functions
-
 /**
  * Hook to attach error messages to the control's grandparent rather than its parent.
  * Uses direct manipulation of DOM.
  */
 export function anchorIonErrorComponent(hostElement: Element, errorElement: Element) {
   hostElement.parentElement.parentElement.append(errorElement);
-  return destroyIonErrorComponent;
-}
-
-/**
- * Hook to destroy the control's error component HTML fragment added by ionErrorComponentAnchorFn.
- */
-function destroyIonErrorComponent(hostElement: Element, errorElement: Element) {
+  return () => {
+    hostElement.parentElement.parentElement.removeChild(errorElement);
+  };
 }
