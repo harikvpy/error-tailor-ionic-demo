@@ -61,8 +61,11 @@ export class IonControlErrorComponent implements ControlErrorComponent {
  * Uses direct manipulation of DOM.
  */
 export function anchorIonErrorComponent(hostElement: Element, errorElement: Element) {
-  hostElement.parentElement.parentElement.append(errorElement);
+  hostElement.parentElement.insertAdjacentElement('afterend', errorElement);
   return () => {
-    hostElement.parentElement.parentElement.removeChild(errorElement);
+    let errorNode = hostElement.parentElement.querySelector('custom-control-error');
+    if (errorNode) {
+      errorNode.remove();
+    }
   };
 }
