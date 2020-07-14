@@ -25,6 +25,7 @@ import { IonControlErrorComponent, anchorIonErrorComponent } from './ion-control
         useFactory() {
           return {
             required: 'This field is required',
+            email: 'Invalid email address',
             minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
           };
         },
