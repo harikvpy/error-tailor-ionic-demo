@@ -4,13 +4,15 @@ An Ionic Angular app that demonstrates how to use [error-tailor](https://github.
 # Updates
 
 ## 2023 May 25
-- Project has been updated to use Angular v13.x & Ionic v6.x. These are not the latest
+- Project has been updated to use Angular v15.x & Ionic v6.x. These are not the latest
   versions of these packages, but are versions that uses their latest architecture
   and design.
 - Code updated to use `ion-note` instead of the original sibling `ion-item` elements
   to wrap the error messages.
 - Added a form submit handler that simulates server form validation errors to show
   how these errors are automatically reflected on the respective form's fields.
+- ErrorTailor configuration updated to update field error state on field's content
+  changes as well.
 
 # How to use
 - Clone the repository. `$ git clone https://github.com/harikvpy/error-tailor-ionic-demo.git`
