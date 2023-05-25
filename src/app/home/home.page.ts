@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -45,12 +45,12 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class HomePage {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private builder: FormBuilder, private http: HttpClient) {
+  constructor(private builder: UntypedFormBuilder, private http: HttpClient) {
     this.form = this.builder.group({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      name: new UntypedFormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new UntypedFormControl('', [Validators.required, Validators.email]),
     });
   }
 

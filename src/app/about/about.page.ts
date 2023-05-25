@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormControl, Validators } from '@angular/forms';
 import { IonInput } from '@ionic/angular';
 
 @Component({
@@ -9,14 +9,14 @@ import { IonInput } from '@ionic/angular';
 })
 export class AboutPage implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   telephone = "+918903458759";
   age = 32;
 
   @ViewChild('telephoneInput', {static: true}) ionTelephone: IonInput;
   @ViewChild('ageInput', {static: true}) ionAge: IonInput;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: UntypedFormBuilder) {
     /*
     this.form = this.formBuilder.group({
       firstName: [
