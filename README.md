@@ -1,14 +1,16 @@
 # error-tailor-ionic-demo
 An Ionic Angular app that demonstrates how to use [error-tailor](https://github.com/ngneat/error-tailor) library to handle form validation errors with a simple directive.
 
-# Updates 2023 May 25
+# Updates
+
+## 2023 May 25
 - Project has been updated to use Angular v13.x & Ionic v6.x. These are not the latest
-  but introduces Ivy and Ionic's latest design. (Ionic v6 to v7 does not involve 
-  serious architectural changes)
-- Code updated to use `ion-note` instead of the original siblit `ion-item` to wrap
-  the error messages.
+  versions of these packages, but are versions that uses their latest architecture
+  and design.
+- Code updated to use `ion-note` instead of the original sibling `ion-item` elements
+  to wrap the error messages.
 - Added a form submit handler that simulates server form validation errors to show
-  how these errors are reflected on the respective form's fields.
+  how these errors are automatically reflected on the respective form's fields.
 
 # How to use
 - Clone the repository. `$ git clone https://github.com/harikvpy/error-tailor-ionic-demo.git`
