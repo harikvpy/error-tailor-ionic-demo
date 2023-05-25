@@ -8,43 +8,46 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { IonControlErrorComponentModule } from './ion-control-error/ion-control-error.module';
-import { IonControlErrorComponent, anchorIonErrorComponent } from './ion-control-error/ion-control-error.component';
+import {
+  IonControlErrorComponent,
+  anchorIonErrorComponent,
+} from './ion-control-error/ion-control-error.component';
 import { HttpClientModule } from '@angular/common/http';
+import { provideErrorTailorConfig, errorTailorImports } from '@ngneat/error-tailor';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        IonicModule.forRoot(),
-        AppRoutingModule,
-        IonControlErrorComponentModule,
-        ErrorTailorModule.forRoot({
-            errors: {
-                useFactory() {
-                    return {
-                        required: 'This field is required',
-                        email: 'Invalid email address',
-                        minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
-                        invalid: 'Invalid input',
-                    };
-                },
-                deps: []
-            },
-            blurPredicate: (element: Element) => {
-                return element.tagName === 'ION-INPUT' || element.tagName === 'ION-SELECT';
-            },
-            controlErrorComponent: IonControlErrorComponent,
-            controlErrorComponentAnchorFn: anchorIonErrorComponent
-        })
-    ],
-    providers: [
-        StatusBar,
-        SplashScreen,
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonControlErrorComponentModule,
+    errorTailorImports,
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideErrorTailorConfig({
+      errors: {
+        useValue: {
+            required: 'This field is required',
+            minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
+            email: 'Invalid email address',
+            invalid: 'Invalid input',
+        },
+      },
+      blurPredicate: (element: Element) => {
+        return (
+          element.tagName === 'ION-INPUT' || element.tagName === 'ION-SELECT'
+        );
+      },
+      controlErrorComponent: IonControlErrorComponent,
+      controlErrorComponentAnchorFn: anchorIonErrorComponent,
+    }),
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

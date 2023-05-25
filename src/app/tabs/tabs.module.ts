@@ -8,7 +8,7 @@ import { TabsPageRoutingModule } from './tabs-routing.module';
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
-import { ErrorTailorModule } from '@ngneat/error-tailor';
+import { errorTailorImports } from '@ngneat/error-tailor';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ErrorTailorModule,
+    errorTailorImports,
     TabsPageRoutingModule
   ],
   declarations: [TabsPage, HomePage, AboutPage]
