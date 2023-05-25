@@ -37,6 +37,7 @@ import { provideErrorTailorConfig, errorTailorImports } from '@ngneat/error-tail
             minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
             email: 'Invalid email address',
             invalid: 'Invalid input',
+            passwordsMismatch: "Two passwords don't match"
         },
       },
       blurPredicate: (element: Element) => {
@@ -46,6 +47,12 @@ import { provideErrorTailorConfig, errorTailorImports } from '@ngneat/error-tail
       },
       controlErrorComponent: IonControlErrorComponent,
       controlErrorComponentAnchorFn: anchorIonErrorComponent,
+      controlErrorsOn: {
+        async: true,
+        blur: true,
+        change: false,
+        status: true
+      }
     }),
   ],
   bootstrap: [AppComponent],
