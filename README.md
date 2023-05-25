@@ -1,6 +1,15 @@
 # error-tailor-ionic-demo
 An Ionic Angular app that demonstrates how to use [error-tailor](https://github.com/ngneat/error-tailor) library to handle form validation errors with a simple directive.
 
+# Updates 2023 May 25
+- Project has been updated to use Angular v13.x & Ionic v6.x. These are not the latest
+  but introduces Ivy and Ionic's latest design. (Ionic v6 to v7 does not involve 
+  serious architectural changes)
+- Code updated to use `ion-note` instead of the original siblit `ion-item` to wrap
+  the error messages.
+- Added a form submit handler that simulates server form validation errors to show
+  how these errors are reflected on the respective form's fields.
+
 # How to use
 - Clone the repository. `$ git clone https://github.com/harikvpy/error-tailor-ionic-demo.git`
 - Install depedencies. `$ cd error-tailor-ionic-demo && npm i`
@@ -15,11 +24,10 @@ Making error-tailor work with ionic forms requires a few steps.
    tag name in uppercase.
 
 2. The default error component is replaced with a custom error component (`IonControlErrorComponent`) via the
-   `controlErrorComponent` configuration. This component wraps each error message in an `ion-item`. This is to fit
-   in with Ionic's default form layout which wraps each form field in an `ion-item`.
+   `controlErrorComponent` configuration. This component wraps each error message in an `ion-note` element
+   with `slot="error"` ensuring that it'll be drawn with the standard `ion-color-danger` color and smaller font.
 
-3. The error components HTML fragment is repositioned in the DOM such that each error message `ion-item` is
-   poisitioned as a sibling of the field `ion-item`, which yields the best visual experience. This is achieved by
+3. The error components HTML fragment is positioned as a sibling of the field with errors. This is achieved by
    providing a custom function to the `controlErrorComponentAnchorFn` error-tailor global config. This custom
    function places the error HTML fragment in the desired location via direct DOM manipulation. Finally, pay
    attention to the return value from this function -- it's yet another function that will be called when the
