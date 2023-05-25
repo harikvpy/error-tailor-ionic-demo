@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { IonControlErrorComponentModule } from './ion-control-error/ion-control-error.module';
 import { IonControlErrorComponent, anchorIonErrorComponent } from './ion-control-error/ion-control-error.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
+        HttpClientModule,
         IonicModule.forRoot(),
         AppRoutingModule,
         IonControlErrorComponentModule,
@@ -26,6 +28,7 @@ import { IonControlErrorComponent, anchorIonErrorComponent } from './ion-control
                         required: 'This field is required',
                         email: 'Invalid email address',
                         minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
+                        invalid: 'Invalid input',
                     };
                 },
                 deps: []
